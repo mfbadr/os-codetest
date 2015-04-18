@@ -5,10 +5,12 @@ var port    = process.env.PORT,
     express = require('express'),
     app     = express();
 
-require('./lib/config')(app);
+//seperate this into middleware and routes
+require('./middleware/middleware')(app, express);
 require('./routes/routes')(app, express);
 
 require('./lib/mongodb')(db, function(){
+  console.log('Express is lsitening on port:', port);
   app.listen(port);
 });
 
