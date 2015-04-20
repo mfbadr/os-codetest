@@ -8,7 +8,12 @@ exports.authenticate = function(req, res, next){
       req.user = user;
       next();
     }else{
-      res.status(401).end();
+      //set redirect_to cookie, send to log in page
+      console.log('REDIRECTED>>>>>>>>')
+      req.session.redirect_to = 'redirect to';
+      req.session.save(function(){
+        res.redirect(401, '/#/login');
+      });
     }
   });
 };

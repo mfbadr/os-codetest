@@ -14,6 +14,8 @@ exports.register = function(req, res){
 };
 
 exports.login = function(req, res){
+  console.log('REQ.SESSION>>>>>>>', req.session);
+  console.log('REQ.cookies>>>>>>>', req.cookies);
   User.login(req.body, function(err, user){
     if(user){
       req.session.regenerate(function(){

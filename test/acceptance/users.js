@@ -53,5 +53,32 @@ describe('users', function(){
       });
     });
   });
+  //
+  describe('get /restricted', function(){
+    it('should allow a logged in user', function(done){
+      request(app)
+      .get('/restricted')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        expect(res.text).to.equal('This page is for logged in users only!');
+        expect(res.status).to.equal(200);
+        done();
+      });
+    });
+    it('should not allow an anon user', function(done){
+      request(app)
+      .delete('/logout')
+      .set('cookie', cookie)
+      .end(function(err, res){
+        request(app)
+        .get('/restricted')
+        .end(function(err, res){
+          expect(res.status).to.equal(401);
+          done();
+        });
+      });
+    });
+  });
+  //
 });
 
