@@ -3,6 +3,7 @@
 var User = require('../models/user');
 
 exports.register = function(req, res){
+  console.log('USER.REGISTER REQ.BODY>>>>>>>', req.body);
   User.register(req.body, function(err, user){
     if(user){
       res.status(200).end();
@@ -13,8 +14,6 @@ exports.register = function(req, res){
 };
 
 exports.login = function(req, res){
-  console.log('REQ.SESSION>>>>>>>', req.session);
-  console.log('REQ.cookies>>>>>>>', req.cookies);
   User.login(req.body, function(err, user){
     if(user){
       req.session.regenerate(function(){

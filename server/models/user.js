@@ -25,9 +25,9 @@ User.register = function(o, cb){
 
 User.login = function(o, cb){
   User.collection.findOne({email:o.email}, function(err, user){
-    if(!user){return cb();}
+    if(!user){return cb(err);}
     var isOk = bcrypt.compareSync(o.password, user.password);
-    if(!isOk){return cb();}
+    if(!isOk){return cb('Wrong Password');}
     cb(null, user);
   });
 };
