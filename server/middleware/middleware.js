@@ -30,7 +30,7 @@ module.exports = function(app, express){
       store:new RedisStore({client:redisClient}),
       secret:'my super secret key',
       resave:true,
-      saveUninitialized:true,
+      saveUninitialized:false,
       cookie:{maxAge:null}
     }
   ));

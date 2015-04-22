@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('os-codetest')
-  .factory('User', ['$rootScope', '$http', '$localForage', function($rootScope, $http, $localForage){
+  .factory('User', ['$rootScope', '$http', '$localForage', '$location', function($rootScope, $http, $localForage, $location){
     var _email;
 
     $rootScope.$on('unauthorized', function(){
@@ -33,8 +33,9 @@
       return $http.post('/register', user);
     }
 
+
     function login(user){
-      return $http.post('/login', user).then(function(response){
+      return $http.post('/login?', user).then(function(response){
         return setEmail(response.data.email);
       });
     }

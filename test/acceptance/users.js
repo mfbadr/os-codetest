@@ -73,7 +73,8 @@ describe('users', function(){
         request(app)
         .get('/restricted')
         .end(function(err, res){
-          expect(res.status).to.equal(401);
+          expect(res.headers['set-cookie'][0]).to.contain('restricted');
+          expect(res.status).to.equal(302);
           done();
         });
       });
