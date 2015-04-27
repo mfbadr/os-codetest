@@ -5,6 +5,9 @@ var port    = process.env.PORT,
     express = require('express'),
     app     = express();
 
+app.set('views', './views');
+app.set('view engine', 'jade');
+//
 //seperate this into middleware and routes
 require('./middleware/middleware')(app, express);
 require('./routes/routes')(app, express);

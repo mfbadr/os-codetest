@@ -44,6 +44,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-jscs": "^1.6.0",
     "grunt-shell": "^1.1.2",
+    "jade": "^1.9.2",
     "jshint-stylish": "^1.0.1",
     "method-override": "^2.3.2",
     "mocha": "^2.2.4",
