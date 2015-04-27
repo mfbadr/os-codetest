@@ -16,6 +16,7 @@ module.exports = function(app, express){
 
   app.use(security.authenticate);
   app.delete('/logout', users.logout);
+  //test
   app.route('/restricted')
     .get(function(req, res){
       res.send('This page is for logged in users only!').status(200);
