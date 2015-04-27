@@ -8,9 +8,10 @@ module.exports = function(app, express){
     .post(users.register);
   app.route('/login')
     .post(users.login);
-  app.route('/test')
+
+  app.route('/')
     .get(function(req, res){
-      res.render('index', {name:'bob'});
+      res.render('index', {user: null});
     });
 
   app.use(security.authenticate);
