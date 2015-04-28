@@ -1,5 +1,19 @@
-html
-  head
-  body
-    p Hello #{name}
+extends layout
+
+block content
+  h2 Home
+  if user
+
+    p Hello #{user.email}
+    a(href='/restricted') You have access to the restricted page!
+    hr
+    form(role='form', method='post', action='/logout', name='logout')
+      button.btn.btn-danger(type='submit') Log Out
+  else
+    p You are not logged in!
+    h3: a(href='/login') Click here to log in
+    h3: a(href='/register') Click here to Register
+    h3: a(href='/restricted') You do not have access to the restricted page, try it!
+
+
 
