@@ -1,28 +1,19 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='utf-8')
-    meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title os-codetest
-    script(src='/vendor/bootstrap/dist/js/bootstrap.js')
-    script(src='/vendor/jquery/dist/jquery.js')
-  body
-    if user
-      p Hello #{user.name} 
-      a(href='/restricted') You have access to the restricted page!
-    else
-      p You are not logged in! Use the form below to login
-      form(role='form', method='post', action='/login', name='userForm')
-        .form-group
-          label(for='email') Email
-          input.form-control#email(type='email', name='email', autofocus, required)
-        .form-group
-          label(for='password') Password
-          input.form-control#password(type='password', name='password', required)
-        .form-group
-          button.btn.btn-primary(ng-click='submit()') Submit
-      a(href='/restricted') You do not have access to the restricted page, try it!
+extends layout
+
+block content
+  h2 Home
+  if user
+
+    p Hello #{user.email}
+    a(href='/restricted') You have access to the restricted page!
+    hr
+    form(role='form', method='post', action='/logout', name='logout')
+      button.btn.btn-danger(type='submit') Log Out
+  else
+    p You are not logged in!
+    h3: a(href='/login') Click here to log in
+    h3: a(href='/register') Click here to Register
+    h3: a(href='/restricted') You do not have access to the restricted page, try it!
 
 
 

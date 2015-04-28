@@ -4,24 +4,37 @@ var users = require('../controllers/users'),
     security = require('../lib/security');
 
 module.exports = function(app, express){
+  app.use(security.userStatus);
+
   app.route('/register')
+    .get(function(req, res){
+      res.render('register', {user:req.user});
+    })
     .post(users.register);
+
   app.route('/login')
+    .get(function(req, res){
+    //
+      res.render('login', {user:req.user});
+      //
+    })
     .post(users.login);
 
   app.route('/')
     .get(function(req, res){
-      res.render('index', {user: null});
+      console.log('session:', req.session);
+      res.render('index', {user:req.user});
     });
 
-  app.use(security.authenticate);
-  app.delete('/logout', users.logout);
-  //test
-  //more test
-
+  //must be logged in
+  app.use(security.bounce);
+  app.route('/logout')
+    .post(users.logout);
+  //app.delete('/logout', users.logout);
   app.route('/restricted')
     .get(function(req, res){
-      res.send('This page is for logged in users only!').status(200);
+      res.render('restricted', {user:req.user});
+    });
 
   console.log('Express: Routes Loaded');
 };
