@@ -1,6 +1,7 @@
 'use strict';
 
 var users = require('../controllers/users'),
+    items    = require('../lib/items.json'),
     security = require('../lib/security');
 
 module.exports = function(app, express){
@@ -22,6 +23,10 @@ module.exports = function(app, express){
     .get(function(req, res){
       res.render('stringParser', {user:req.user});
     });
+  app.route('/frontend')
+    .get(function(req, res){
+      res.render('frontend');
+    });
 
   app.route('/')
     .get(function(req, res){
@@ -29,6 +34,10 @@ module.exports = function(app, express){
       res.render('index', {user:req.user});
     });
 
+  app.route('/getitems')
+    .get(function(req, res){
+      res.send(items);
+    });
   //must be logged in
   app.use(security.bounce);
   app.route('/logout')
