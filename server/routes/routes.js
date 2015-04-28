@@ -18,6 +18,11 @@ module.exports = function(app, express){
     })
     .post(users.login);
 
+  app.route('/stringparser')
+    .get(function(req, res){
+      res.render('stringParser', {user:req.user});
+    });
+
   app.route('/')
     .get(function(req, res){
       console.log('session:', req.session);

@@ -1,0 +1,16 @@
+extends layout
+block content
+  if user
+    p Hello #{user.email} 
+  h2 Ready to parse some strings?
+  .form-group
+    label(for='string') String
+    input.form-control#string(type='text', name='string', autofocus)
+  .form-group
+    button.btn.btn-primary#button Parse that string!
+  h3 Count:
+  pre#count
+  h3 Min and Max:
+  pre#minAndMax
+  script(src='/js/stringParser.js')
+
