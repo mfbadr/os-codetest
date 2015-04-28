@@ -14,9 +14,7 @@ module.exports = function(app, express){
 
   app.route('/login')
     .get(function(req, res){
-    //
       res.render('login', {user:req.user});
-      //
     })
     .post(users.login);
 
