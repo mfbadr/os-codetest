@@ -5,7 +5,8 @@ block content
   if user
 
     p Hello #{user.email}
-    a(href='/restricted') You have access to the restricted page!
+    h2: a(href='/restricted') You have access to the restricted page!
+    h3: a(href='/stringparser') String Parser
     hr
     form(role='form', method='post', action='/logout', name='logout')
       button.btn.btn-danger(type='submit') Log Out

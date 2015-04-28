@@ -4,6 +4,8 @@ block content
   if user
     p Hello #{user.email}
     h2 This is the restricted page
+    h3 Enjoy this adorable picture of a cat
+    img(src='/assets/bb.jpg')
     h3: a(href='/') Back to home
   else
     h2 You got the this page without logging in, how??
