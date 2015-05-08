@@ -8,7 +8,6 @@ $.getJSON('/getitems', function(data){
   addItems(items);
 });
 
-
 function addItems(items){
   for(var i = 0; i < items.length; i++){
     var $item  = $('<div/>', {'class': 'item'}),
