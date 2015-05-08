@@ -9,7 +9,6 @@ function StringParser(s){
 StringParser.prototype.count = function(){
   var charArray = this.string.toLowerCase().split(''),
       countObj  = {};
-
   for(var i = 0; i < charArray.length; i++){
     if(!countObj[charArray[i]]){
       countObj[charArray[i]] = 1;
@@ -44,7 +43,6 @@ StringParser.prototype.minAndMax = function(){
   for(i = 0; i < keysArray.length; i++){
     var currentMaxChar = keysArray[i];
     if(countObj[currentMaxChar] > max){
-      //less than min, clear array
       max = countObj[currentMaxChar];
       maxArray = [currentMaxChar];
     }else if(countObj[currentMaxChar] === max){
@@ -53,7 +51,7 @@ StringParser.prototype.minAndMax = function(){
   }
 
   return {
-    'minArray':minArray,
+    'minArray': minArray,
     'minCount': min,
     'maxArray': maxArray,
     'maxCount': max

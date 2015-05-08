@@ -16,11 +16,66 @@
 @BLACK:   #111111;
 @GRAY:    #AAAAAA;
 @SILVER:  #DDDDDD;
-
 @grey: #EEEEEF;
 
 body{
   background-color: @grey;
 }
 
+#item-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item{
+  background-color: white;
+
+  margin: 14px;
+
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  flex-basis: 200px;
+  align-self: flex-start;
+
+  box-shadow: 5px 5px 5px #888888;
+
+
+}
+
+.holder{
+  margin: 14px;
+  flex-basis: 200px;
+  align-self: flex-start;
+  height: 0px;
+}
+
+.itemImage{
+  position: absolute;
+  display: block;
+  top: 0px;
+  bottom: 40px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+  max-width: 50px;
+}
+
+
+.itemText{
+  padding-left: 4px;
+  padding-bottom: 4px;
+  vertical-align: center;
+  height: 40px;
+  position: absolute;
+  bottom: 0px;
+  color: @SILVER;
+  width: 100%;
+  background-color: #333333;
+}
 
